@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e78d88c-062a-4497-8ba3-9466353b59d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Address-Service.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address/templates/__init__.py" afterDir="false" />
+    <list default="true" id="4e78d88c-062a-4497-8ba3-9466353b59d2" name="Changes" comment="Formato inicial usando fabric.">
+      <change afterPath="$PROJECT_DIR$/address/templates/address/cad_endereco_brasileiro.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address/templates/address/endereco_brasileiro.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postcard/static/postcard/postal_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postcard/templates/postcard/enviar_postal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postcard/templates/postcard/visualizar_postal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postcard/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +22,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -31,6 +33,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2yXyggl7TWwyHzYMJu6LE8q8zvw" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="openDirectoriesWithSingleClick" value="true" />
@@ -38,15 +43,20 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Python.models.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/linus/projects/Address-Service/Address-Service&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/postcard/static/postcard" />
+      <recent name="$PROJECT_DIR$/postcard/static" />
+      <recent name="$PROJECT_DIR$/postcard/templates" />
       <recent name="$PROJECT_DIR$/address/migrations" />
       <recent name="$PROJECT_DIR$/address/templates" />
     </key>
@@ -66,6 +76,15 @@
       <option name="presentableId" value="Default" />
       <updated>1749995326527</updated>
     </task>
+    <task id="LOCAL-00001" summary="Formato inicial usando fabric.">
+      <option name="closed" value="true" />
+      <created>1753558686284</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1753558686284</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -78,6 +97,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Formato inicial usando fabric." />
+    <option name="LAST_COMMIT_MESSAGE" value="Formato inicial usando fabric." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

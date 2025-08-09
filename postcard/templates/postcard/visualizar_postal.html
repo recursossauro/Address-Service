@@ -1,0 +1,53 @@
+{% extends 'postcard/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'postcard/style.css' %}">
+    <link rel="stylesheet" href="{% static 'postcard/postal_style.css' %}">
+{% endblock %}
+
+{% block conteudo %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">Pré-visualização do Postal</h2>
+    
+    <!-- Contêiner do Postal -->
+    <div class="postal-preview mx-auto">
+        <!-- Frente (Imagem) -->
+        <div class="postal-side postal-front shadow-lg">
+            <img src="{{ imagem_url }}" alt="Imagem do Postal" class="img-fluid">
+            <div class="watermark">POSTAL REAL</div>
+        </div>
+        
+        <!-- Verso (Mensagem + Endereço) -->
+        <div class="postal-side postal-back shadow-lg">
+            <!-- Área do Selo (novo) -->
+            <div class="stamp-area">
+                <div class="stamp-placeholder">Selos</div>
+            </div>
+            
+            <div class="postal-content">
+                <!-- Mensagem -->
+                <div class="postal-message">
+                    <p>{{ mensagem|linebreaksbr }}</p>
+                </div>
+
+                <!-- Endereço -->
+                <div class="postal-address">
+                    <p>{{ destinatario }}</p>
+                    {% include 'address/endereco_brasileiro.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Botões de Ação -->
+    <div class="text-center mt-4">
+        <button class="btn btn-warning me-2" onclick="window.print()">
+            <i class="bi bi-printer"></i> Imprimir
+        </button>
+        <a href="{% url 'postcard:enviar' %}" class="btn btn-primary">
+            <i class="bi bi-send"></i> Enviar para Impressão
+        </a>
+    </div>
+</div>
+{% endblock %}

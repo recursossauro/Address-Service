@@ -1,0 +1,68 @@
+{% extends 'postcard/base.html' %}
+{% load static %}
+{% block conteudo %}
+    <script>
+        funciton nomePais() {
+            nome_pais = document.getElementById('99');
+            if (document.getElementById('id_pais').value=='99') {nome_pais.type='text'}
+            else {nome_pais.type='hidden'}
+        }
+    </script>
+        <!-- Cartão Postal -->
+        <article class="postal-card mx-auto">
+            <!-- Frente do Postal (Imagem) -->
+            <section class="postal-front">
+                <img src="{% static 'postcard/post_image.png' %}"
+                     alt="Imagem do Postal"
+                     class="img-fluid postal-image"
+                     id="postalImage">
+                <button class="btn btn-sm btn-dark change-image-btn">
+                    <i class="bi bi-image"></i> Trocar Imagem
+                </button>
+            </section>
+
+            <form action="{% url 'postcard:visualizar' %}" method="post">
+                {% csrf_token %}
+                <!-- Verso do Postal -->
+                <section class="postal-back">
+                    <!-- Lado Esquerdo: Mensagem -->
+                    <section class="postal-message">
+                        <h3><i class="bi bi-pencil"></i> Sua Mensagem:</h3>
+                        <textarea class="form-control" rows="8" name="mensagem"
+                                  placeholder="Escreva sua mensagem aqui..."></textarea>
+                    </section>
+
+                    <!-- Lado Direito: Endereço -->
+                    <section class="postal-address">
+                        <h3><i class="bi bi-geo-alt"></i> Destino:</h3>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Nome do Destinatário" name="destinatario">
+                            </div>
+                            <div class="mb-3" id="id_pais_listado">
+                                <select class="form-select" id="id_pais" onchange="{
+
+                                    }">
+                                    <option value="" selected>País</option>
+                                    <option value="BR">Brasil</option>
+                                    <option value="US">EUA</option>
+                                    <option value="99">Outro</option>
+                                    <!-- Outros países -->
+                                </select>
+                                <input type="hidden" class="form-control" name="nome_pais" id="id_nome_pais" placeholder="País">
+                            </div>
+                            {% include 'address/cad_endereco_brasileiro.html' %}
+                    </section>
+                </section>
+                <!-- Botão de Envio -->
+                <aside class="text-center mt-4">
+                    <button class="btn btn-warning btn-lg">
+                        <i class="bi bi-card-text"></i> Enderço Remetente
+                    </button>
+                    <button type="submit" class="btn btn-warning btn-lg"><i class="bi bi-rocket"></i> Visualizar Postal Real</button>
+                </aside>
+            </form>
+        </article>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
