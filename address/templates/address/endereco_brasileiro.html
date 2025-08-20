@@ -1,10 +1,13 @@
 <div class="linhaendereco logradouro">
-    {{logradouro}} {{numero}} {% if complemento %}, {{complemento}}{% endif %}
+    {{address.logradouro}} {{address.numero}} {% if address.complemento %}, {{address.complemento}}{% endif %}
 </div>
 <div class="linhaendereco bairro">
-    {{bairro}}
+    {{address.bairro}}
 </div>
 <div class="linhaendereco cepcidadesigla">
-    <b>{{cep}}</b> {{cidade}}/{{sigla}}
+    <b>{{address.cep}}</b> {{address.cidade}}/{{address.estado.sigla}}
+</div>
+<div class="linhaendereco country">
+    <b>{{address.country}}</b>
 </div>
 

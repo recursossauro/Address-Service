@@ -1,4 +1,5 @@
-<input type="hidden" name="postal_system" value="BR" id="id_postal_system">
+<input type="hidden" name="postal_system_code" value="BR" id="id_postal_system_code">
+<input type="hidden" name="country" value="BR" id="id_country">
 <div class="mb-3">
     <input type="text" class="form-control" placeholder="CEP" name="cep" maxlength="9" required id="id_cep">
 </div>
@@ -8,63 +9,12 @@
     </div>
     <div class="col-md-4">
         <select name="estado" class="form-control" id="id_estado">
-  <option value="" selected>UF</option>
 
-  <option value="1">AC - Acre</option>
-
-  <option value="2">AL - Alagoas</option>
-
-  <option value="3">AP - Amapá</option>
-
-  <option value="4">AM - Amazonas</option>
-
-  <option value="5">BA - Bahia</option>
-
-  <option value="6">CE - Ceará</option>
-
-  <option value="7">DF - Distrito Federal</option>
-
-  <option value="8">ES - Espírito Santo</option>
-
-  <option value="9">GO - Goiás</option>
-
-  <option value="10">MA - Maranhão</option>
-
-  <option value="11">MT - Mato Grosso</option>
-
-  <option value="12">MS - Mato Grosso do Sul</option>
-
-  <option value="13">MG - Minas Gerais</option>
-
-  <option value="14">PA - Pará</option>
-
-  <option value="15">PB - Paraíba</option>
-
-  <option value="16">PR - Paraná</option>
-
-  <option value="17">PE - Pernambuco</option>
-
-  <option value="18">PI - Piauí</option>
-
-  <option value="19">RJ - Rio de Janeiro</option>
-
-  <option value="20">RN - Rio Grande do Norte</option>
-
-  <option value="21">RS - Rio Grande do Sul</option>
-
-  <option value="22">RO - Rondônia</option>
-
-  <option value="23">RR - Roraima</option>
-
-  <option value="24">SC - Santa Catarina</option>
-
-  <option value="25">SP - São Paulo</option>
-
-  <option value="26">SE - Sergipe</option>
-
-  <option value="27">TO - Tocantins</option>
-
-</select>
+            <option value="" selected>UF</option>
+            {% for estado in addressTools.estados %}
+                <option value="{{estado.pk}}">{{estado.sigla}} - {{estado.name}}</option>
+            {% endfor %}
+        </select>
 
     </div>
 </div>

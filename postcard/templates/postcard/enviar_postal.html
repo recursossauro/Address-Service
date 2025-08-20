@@ -21,7 +21,7 @@
                 </button>
             </section>
 
-            <form action="{% url 'postcard:visualizar' %}" method="post">
+            <form action="{% url 'postcard:visualizar' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <!-- Verso do Postal -->
                 <section class="postal-back">
@@ -39,7 +39,7 @@
                                 <input type="text" class="form-control" placeholder="Nome do Destinatário" name="destinatario">
                             </div>
                             <div class="mb-3" id="id_pais_listado">
-                                <select class="form-select" id="id_pais" onchange="{
+                                <select class="form-select" id="id_country" name="country" onchange="{
 
                                     }">
                                     <option value="" selected>País</option>
@@ -50,7 +50,8 @@
                                 </select>
                                 <input type="hidden" class="form-control" name="nome_pais" id="id_nome_pais" placeholder="País">
                             </div>
-                            {% include 'address/cad_endereco_brasileiro.html' %}
+
+                            {% include addressTools.address_fields_html %}
                     </section>
                 </section>
                 <!-- Botão de Envio -->
