@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e78d88c-062a-4497-8ba3-9466353b59d2" name="Changes" comment="Alterações para visualizar postal antes de imprimir com html padrão de endereço brasileiro.">
-      <change afterPath="$PROJECT_DIR$/address/address_factory.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postcard/forms.py" afterDir="false" />
+    <list default="true" id="4e78d88c-062a-4497-8ba3-9466353b59d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/address/templates/address/cad_endereco_brasileiro.html" beforeDir="false" afterPath="$PROJECT_DIR$/address/templates/address/cad_endereco_brasileiro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/address/templates/address/endereco_brasileiro.html" beforeDir="false" afterPath="$PROJECT_DIR$/address/templates/address/endereco_brasileiro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postcard/templates/postcard/enviar_postal.html" beforeDir="false" afterPath="$PROJECT_DIR$/postcard/templates/postcard/enviar_postal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postcard/templates/postcard/visualizar_postal.html" beforeDir="false" afterPath="$PROJECT_DIR$/postcard/templates/postcard/visualizar_postal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postcard/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/postcard/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +87,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754754205347</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Correções de erros e melhorias no pacote address para diminuir a dependência entre os sistemas que o utilzarão e diminuir a necessidade de implementar em função do pacote.">
+      <option name="closed" value="true" />
+      <created>1755698647586</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1755698647586</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,7 +112,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Formato inicial usando fabric." />
     <MESSAGE value="Alterações para visualizar postal antes de imprimir com html padrão de endereço brasileiro." />
-    <option name="LAST_COMMIT_MESSAGE" value="Alterações para visualizar postal antes de imprimir com html padrão de endereço brasileiro." />
+    <MESSAGE value="Correções de erros e melhorias no pacote address para diminuir a dependência entre os sistemas que o utilzarão e diminuir a necessidade de implementar em função do pacote." />
+    <option name="LAST_COMMIT_MESSAGE" value="Correções de erros e melhorias no pacote address para diminuir a dependência entre os sistemas que o utilzarão e diminuir a necessidade de implementar em função do pacote." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

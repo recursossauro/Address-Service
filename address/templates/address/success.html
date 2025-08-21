@@ -1,0 +1,9 @@
+{% extends "address/base.html" %}
+
+{% block content %}
+    <div class="alert alert-success">
+        <h2>Endereço salvo com sucesso!</h2>
+        <p>{{ address }}</p>
+        <a href="{% url 'home' %}" class="btn btn-primary">Voltar</a>
+    </div>
+{% endblock %}

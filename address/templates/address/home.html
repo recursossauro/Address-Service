@@ -1,0 +1,28 @@
+{% extends "address/base.html" %}
+
+{% block content %}
+    <h1 class="mb-4">Cadastro de Endereço</h1>
+    
+    <!-- Formulário de seleção de país -->
+    <form method="post">
+        {% csrf_token %}
+        {{ country_form.as_p }}
+        <button type="submit" class="btn btn-primary">Selecionar Sistema de Endereço</button>
+    </form>
+
+    <!-- Formulário de endereço (aparece após seleção do país) -->
+    {% if address_form %}
+        <hr>
+        <h2>Endereço - {{ country_form.cleaned_data.country_choice }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="country" value="{{ country_form.cleaned_data.country_choice }}">
+            {{ address_form.as_p }}
+            <button type="submit" class="btn btn-success">Salvar Endereço</button>
+        </form>
+    {% endif %}
+
+    {% for address in addresses %}
+        {{address}}</br>
+    {% endfor %}
+{% endblock %}

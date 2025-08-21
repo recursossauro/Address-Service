@@ -1,0 +1,118 @@
+:root {
+    --amarelo-ovo: #FFD700;
+    --preto: #000000;
+    --branco: #FFFFFF;
+    --amarelo-claro: #FFF9C4;
+    --borda-postal: #e0c040;
+}
+
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+
+.navbar-custom {
+    background-color: var(--preto);
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: var(--amarelo-ovo) !important;
+}
+
+.navbar-custom .nav-link:hover {
+    color: var(--branco) !important;
+}
+
+.navbar-custom .bi {
+    margin-right: 5px;
+}
+
+.content-custom {
+    background-color: var(--amarelo-claro);
+    min-height: calc(100vh - 56px);
+    padding: 20px 0;
+}
+
+.title-custom {
+    color: var(--preto);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.container.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+
+.postal-card {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.postal-front {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 2px solid var(--borda-postal);
+    border-radius: 10px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.postal-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.change-image-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.postal-back {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid var(--borda-postal);
+    border-radius: 10px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.postal-message {
+    flex: 1;
+    min-width: 300px;
+    padding-right: 15px;
+    border-right: 1px dashed #ccc;
+}
+
+.postal-address {
+    flex: 1;
+    min-width: 300px;
+    padding-left: 15px;
+}
+
+@media (max-width: 768px) {
+    .postal-back {
+        flex-direction: column;
+    }
+
+    .postal-message, .postal-address {
+        min-width: 100%;
+        padding: 0;
+        border-right: none;
+        border-bottom: 1px dashed #ccc;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+}
