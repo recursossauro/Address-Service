@@ -1,12 +1,31 @@
 from django import forms
 from django.forms import modelform_factory
-
+from functools import wraps
+from typing import Dict, Any, Type
 from .models import (
-    Address,
     EnderecoBrasileiro, EstadoBrasileiro,
     GenericAddress)
 
-from .forms import EnderecoBrasileiroForm
+
+def auto_extract_fields(func):
+    """Decorator que automaticamente extrai campos do request"""
+
+    @wraps(func)
+    def wrapper(cls, request):
+        if not hasattr(cls, '_field_source'):
+            cls._field_source = getattr(cls, 'address_form', None) or getattr(cls, 'model', None)
+
+        data = {}
+        fields = cls._get_fields_from_source(cls._field_source)
+
+        for field_name, field in fields.items():
+            if field_name in request.POST:
+                data[field_name] = cls._convert_field_value(field, request.POST[field_name])
+
+        return func(cls, request, data)
+
+    return wrapper
+
 
 class AddressTools:
 
@@ -80,38 +99,46 @@ class AddressTools:
         )
 
     @classmethod
-    def getAddressFromRequest(cls, request):
-        if request.method == 'POST':
-            form = cls.address_form(request.POST)
+    def _get_fields_from_source(cls, field_source) -> Dict[str, Any]:
+        """Obtém campos do formulário ou modelo"""
+        if field_source and issubclass(field_source, forms.BaseForm):
+            return field_source.base_fields
+        elif field_source and issubclass(field_source, models.Model):
+            return {f.name: f for f in field_source._meta.get_fields()
+                    if isinstance(f, models.Field)}
+        else:
+            raise TypeError("Fonte de campos deve ser Form ou Model")
 
-            if form.is_valid():
-                return form.save(commit=False)
+    @classmethod
+    def _convert_field_value(cls, field, raw_value: str) -> Any:
+        """Converte valor baseado no tipo do campo"""
+        # Para formulários Django
+        if isinstance(field, forms.Field):
+            try:
+                return field.clean(raw_value)
+            except forms.ValidationError:
+                return raw_value  # Fallback para validação falha
+
+        # Para modelos Django
+        elif isinstance(field, models.Field):
+            if isinstance(field, (models.IntegerField, models.AutoField)):
+                return int(raw_value) if raw_value and raw_value.isdigit() else None
+            elif isinstance(field, models.BooleanField):
+                return raw_value.lower() in ('true', '1', 'yes', 'on')
+            elif isinstance(field, models.DateField):
+                # Implementar parsing de data conforme necessário
+                return raw_value
             else:
-                print("❌ Erros:", form.errors)
+                return raw_value  # Strings e campos simples
 
-                instance = cls.model()
+        return raw_value  # Fallback
 
-                # Preenche campos normais
-                for field_name in ['cep', 'cidade', 'bairro', 'logradouro', 'complemento', 'country']:
-                    if field_name in request.POST:
-                        setattr(instance, field_name, request.POST[field_name])
 
-                # Campos especiais
-                if 'numero' in request.POST and request.POST['numero']:
-                    try:
-                        instance.numero = int(request.POST['numero'])
-                    except ValueError:
-                        print("⚠️  Número inválido")
-
-                # Processamento do estado (ForeignKey)
-                if 'estado' in request.POST and request.POST['estado']:
-                    try:
-                        estado_id = int(request.POST['estado'])
-                        instance.estado = EstadoBrasileiro.objects.get(pk=estado_id)
-                    except (ValueError, EstadoBrasileiro.DoesNotExist):
-                        print("⚠️  Estado inválido ou não encontrado")
-
-                return instance
+    @classmethod
+    @auto_extract_fields
+    def getAddressFromRequest(cls, request, extracted_data=None):
+        """Método agora recebe dados extraídos automaticamente"""
+        return extracted_data or {}
 
     @classmethod
     def save(cls, *args, **kwargs):
@@ -124,6 +151,25 @@ class EnderecoBrasileiroTools(AddressTools, postal_system_code=EnderecoBrasileir
     address_html        = 'address/endereco_brasileiro.html'
     model = EnderecoBrasileiro
     clsEstado = EstadoBrasileiro
+
+    @classmethod
+    def getAddressFromRequest(cls, request):
+        """Pode ser sobrescrito para comportamentos específicos"""
+        data = super().getAddressFromRequest(request)
+
+        # Validações específicas do Brasil
+        if 'cep' in data:
+            data['cep'] = cls._formatar_cep(data['cep'])
+
+        return data
+
+    @staticmethod
+    def _formatar_cep(cep: str) -> str:
+        """Formata CEP no padrão brasileiro"""
+        cep = ''.join(filter(str.isdigit, cep))
+        if len(cep) == 8:
+            return f"{cep[:5]}-{cep[5:]}"
+        return cep
 
     @classmethod
     def estados(cls):
