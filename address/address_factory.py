@@ -131,4 +131,4 @@ class EnderecoBrasileiroTools(AddressTools, postal_system_code=EnderecoBrasileir
 
     @classmethod
     def getEstado(cls, pk):
-        return cls.model.objects.get(pk=pk)
+        return cls.clsEstado.objects.get(pk=pk)
