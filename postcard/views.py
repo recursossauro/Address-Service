@@ -17,7 +17,7 @@ def visualizar_postal(request):
         imagem_url = imagem.url if imagem else '/static/postcard/post_image.png',
         address    = addressTools.getAddressFromRequest(request)
 
-        print(f'\n\n\n\n\n {type(address).__name__} {address} \n\n\n\n\n\n\n')
+        # print(f'\n\n\n\n\n {type(address).__name__} {address} \n\n\n\n\n\n\n')
 
 
         context = {
