@@ -150,7 +150,6 @@ class EnderecoBrasileiroTools(AddressTools, postal_system_code=EnderecoBrasileir
     address_fields_html = 'address/cad_endereco_brasileiro.html'
     address_html        = 'address/endereco_brasileiro.html'
     model = EnderecoBrasileiro
-    clsEstado = EstadoBrasileiro
 
     @classmethod
     def getAddressFromRequest(cls, request):

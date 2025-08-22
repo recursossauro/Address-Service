@@ -127,10 +127,10 @@ class EnderecoBrasileiro(Address, postal_system_code='BR'):
 class USAddress(Address, postal_system_code='US'):
     postal_system_name = "USA Postal System"
 
-    country = models.CharField( max_length=2, default='US')  # Ex: 'BR', 'US'
-    street = models.CharField(max_length=255)
-    city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
+    country  = models.CharField( max_length=2, default='US')  # Ex: 'BR', 'US'
+    street   = models.CharField(max_length=255)
+    city     = models.CharField(max_length=100)
+    state    = models.CharField(max_length=100)
     zip_code = models.CharField(max_length=10)  # ZIP+4 (XXXXX-XXXX)
 
     def __str__(self):

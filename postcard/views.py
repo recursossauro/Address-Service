@@ -13,9 +13,10 @@ def visualizar_postal(request):
     if request.method == 'POST':
 
         # Captura os dados do formulário
-        imagem     = request.FILES.get('imagem')
-        imagem_url = imagem.url if imagem else '/static/postcard/post_image.png',
-        address    = addressTools.getAddressFromRequest(request)
+        imagem       = request.FILES.get('imagem')
+        imagem_url   = imagem.url if imagem else '/static/postcard/post_image.png'
+        destinatario = request.POST.get('destinatario', '')
+        address      = addressTools.getAddressFromRequest(request)
 
         # print(f'\n\n\n\n\n {type(address).__name__} {address} \n\n\n\n\n\n\n')
 
@@ -24,6 +25,7 @@ def visualizar_postal(request):
             'mensagem': request.POST.get('mensagem',''),
             'imagem_url':   imagem_url,
             'addressTools': addressTools,
+            'destinatario': destinatario,
             'address': address,
         }
 
