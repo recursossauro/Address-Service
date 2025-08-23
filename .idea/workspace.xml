@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4e78d88c-062a-4497-8ba3-9466353b59d2" name="Changes" comment="postcard.views.py&#10;row 20 print(f'\n\n\n\n\n {type(address).__name__} {address} \n\n\n\n\n\n\n')was commented.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/address/address_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/address/address_factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/address/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/address/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postcard/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/postcard/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postcard/templates/postcard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/postcard/templates/postcard/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postcard/templates/postcard/visualizar_postal.html" beforeDir="false" afterPath="$PROJECT_DIR$/postcard/templates/postcard/visualizar_postal.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
